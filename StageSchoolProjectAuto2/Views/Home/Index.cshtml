@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Car-registration</h1>
+    <p class="lead">Begin</p>
+
+    @if (Session["LogedUserFullname"] != null)
+    {
+        <p><a href="~/Home/About" class="btn btn-primary btn-lg">Mijn favorieten &raquo;</a></p>
+    }
+    else
+    {
+        <p><a href="~/Home/Registratie" class="btn btn-primary btn-lg">Registreren &raquo;</a></p>
+    }
+    <p><a href="~/Home/About" class="btn btn-primary btn-lg">Zoek naar auto details &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2></h2>
+        <p>
+
+        </p>
+    </div>
+</div>

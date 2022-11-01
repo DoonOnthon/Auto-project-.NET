@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "AfterLogin";
+    if (Session["LogedUserFullname"] != null)
+    {
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+    else { Layout = "~/Views/Shared/_Layout.cshtml"; }
+}
+@model StageSchoolProjectAuto2.Models.RDWModel
+
+<h2>Random car-details</h2>
+<body>
+    <form method="post">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Benamingen</th>
+                <th scope="col">Auto gegevens</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-info">
+                <th scope="row">Willekeurig kenteken</th>
+                <td>@ViewBag.WilKenteken;</td>
+            </tr>
+            <tr>
+                <th scope="row">Merk</th>
+                <td>@ViewBag.WilMerk</td>
+            </tr>
+            <tr>
+                <th scope="row">Handelsbenaming</th>
+                <td>@ViewBag.WilHandelsbenaming</td>
+            </tr>
+            <tr>
+                <th scope="row">Type auto</th>
+                <td>@ViewBag.WilInrichting</td>
+            </tr>
+            <tr>
+                <th scope="row">europese voertuigscategorie</th>
+                <td>@ViewBag.WilEUcat</td>
+            </tr>
+            <tr>
+                <th scope="row">Cilinders</th>
+                <td>@ViewBag.WilaantalCilinder</td>
+            </tr>
+            <tr>
+                <th scope="row">Wielbasis</th>
+                <td>@ViewBag.WilWielbasis</td>
+            </tr>
+            <tr>
+                <th scope="row">Tellerstandoordeel</th>
+                <td>@ViewBag.WilTellerstandoordeel</td>
+            </tr>
+            <tr>
+                <th scope="row">Zoekopdracht suggestie</th>
+                <td>@ViewBag.carSearch</td>
+                <td>
+                    <input type="submit" name="submitButton" value="Save" />
+                    <input type="submit" name="submitButton" value="Cancel" />
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <script async src="https://cse.google.com/cse.js?cx=1585c4b2d4f5255f3"></script>
+    <div class="gcse-search"></div>
+    </form>
+</body>

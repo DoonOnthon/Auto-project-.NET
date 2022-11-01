@@ -1,0 +1,21 @@
+﻿@using StageSchoolProjectAuto2
+@model StageSchoolProjectAuto2.Models.RDWModel
+
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+    @using (Html.BeginForm("About", "Home", FormMethod.Post))
+    {
+        <tr>
+            <td>Gebruikersnaam: </td>
+            <td>
+                @Html.TextBoxFor(m => m.KentekenInput)
+            </td>
+        </tr>
+    }
+<p>Use this area to provide additional information.</p>

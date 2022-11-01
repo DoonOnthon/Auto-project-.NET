@@ -1,0 +1,47 @@
+﻿@using StageSchoolProjectAuto2
+@model StageSchoolProjectAuto2.Models.LoginViewModel
+@{
+    ViewBag.Title = "Inloggen";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Inloggen", "Home", FormMethod.Post))
+{
+    //this  is for create form tag
+    @Html.AntiForgeryToken() // this is for prevent CSRF attack
+    @Html.ValidationSummary(true)
+    if (@ViewBag.Message != null)
+    {
+        <div style="border: 1px solid red">
+            @ViewBag.Message
+        </div>
+    }
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a => a.Gebruikersnaam)</td>
+            <td>@Html.TextBoxFor(a => a.Gebruikersnaam)</td>
+            <td>@Html.ValidationMessageFor(a => a.Gebruikersnaam)</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(a => a.Wachtwoord)
+            </td>
+            <td>
+                @Html.PasswordFor(a => a.Wachtwoord)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(a => a.Wachtwoord)
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" class="btn btn-primary btn-lg" value="Indienen" /></td>
+        </tr>
+    </table>
+}
+
+@* This below line is for create javascript section *@
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

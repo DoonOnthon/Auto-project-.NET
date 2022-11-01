@@ -1,0 +1,79 @@
+﻿@using StageSchoolProjectAuto2
+@model StageSchoolProjectAuto2.Models.RDWModel
+
+
+@{
+    ViewBag.Title = "About";
+}
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+@using (Html.BeginForm("About", "Home", FormMethod.Post))
+{
+    <h2>Voer het kenteken in</h2>
+    <table class="table">
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.KentekenInput)
+                <input type="submit" class="btn btn-primary btn-lg" value="Indienen" />
+            </td>
+        </tr>
+    </table>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Benamingen</th>
+            <th scope="col">Auto gegevens</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-info">
+            <th scope="row">Kenteken</th>
+            <td class="table-info">@ViewBag.KentekenOutput</td>
+        </tr>
+        <tr>
+            <th scope="row">Merk</th>
+            <td>@ViewBag.MerkOutput</td>
+        </tr>
+        <tr>
+            <th scope="row">Handelsbenaming</th>
+            <td>@ViewBag.handelsbenaming</td>
+        </tr>
+        <tr>
+            <th scope="row">Type auto</th>
+            <td>@ViewBag.inrichting</td>
+        </tr>
+        <tr>
+            <th scope="row">Datum eerste afgifte Nederland</th>
+            <td>@ViewBag.datum_eerste_afgifte_nederland</td>                                
+        </tr>
+        <tr>
+            <th scope="row">verval datum apk</th>
+            <td>@ViewBag.vervaldatum_apk</td>
+        </tr>
+        <tr>
+            <th scope="row">europese voertuigscategorie</th>
+            <td>@ViewBag.europese_voertuigcategorie</td>
+        </tr>
+        <tr>
+            <th scope="row">Cilinders</th>
+            <td>@ViewBag.aantal_cilinders</td>
+        </tr>
+        <tr>
+            <th scope="row">Wielbasis</th>
+            <td>@ViewBag.wielbasis</td>
+        </tr>
+        <tr>
+            <th scope="row">Tellerstandoordeel</th>
+            <td>@ViewBag.tellerstandoordeel</td>
+        </tr>
+        <tr>
+            <th scope="row">Zoekopdracht suggestie</th>
+            <td>@ViewBag.carSearch</td>
+    </tbody>
+</table>
+<br />
+
+<script async src="https://cse.google.com/cse.js?cx=1585c4b2d4f5255f3"></script>
+    <div class="gcse-search" data-autoSearchOnLoad ="True"></div>
