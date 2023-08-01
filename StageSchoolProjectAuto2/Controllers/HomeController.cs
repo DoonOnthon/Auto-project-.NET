@@ -250,72 +250,72 @@ namespace StageSchoolProjectAuto2.Controllers
             }
             return View(u);
         }
-        //[HttpGet]
-        //public ActionResult AfterLogin()
-        //{
-        //    string connString = @"Data Source=DESKTOP-0K7399A;Initial Catalog=TEST_Stagiair;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework";
-        //    //Insert into database
-        //    using (SqlConnection conn = new SqlConnection(connString))
-        //    {
-        //        string query = @"SELECT TOP 1 PERCENT Kenteken FROM Kentekens ORDER BY newid()";
-        //        //int KentekenID;
-        //        string Kenteken;
-        //        using (SqlCommand cmd = new SqlCommand(query))
-        //        {
-        //            cmd.Connection = conn;
-        //            conn.Open();
-        //            SqlDataReader dr = cmd.ExecuteReader();
-        //            if (dr.HasRows)
-        //            {
-        //                while (dr.Read())
-        //                {
-        //                    //KentekenID = dr.GetInt32(0);
-        //                    Kenteken = dr.GetString(0);
-        //                    ViewBag.KentekenOut = (Kenteken);
+        [HttpGet]
+        public ActionResult AfterLogin()
+        {
+            string connString = @"Data Source=DESKTOP-0K7399A;Initial Catalog=TEST_Stagiair;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework";
+            //Insert into database
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                string query = @"SELECT TOP 1 PERCENT Kenteken FROM Kentekens ORDER BY newid()";
+                //int KentekenID;
+                string Kenteken;
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = conn;
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            //KentekenID = dr.GetInt32(0);
+                            Kenteken = dr.GetString(0);
+                            ViewBag.KentekenOut = (Kenteken);
 
-        //                    var client = new SodaClient("https://opendata.rdw.nl");
+                            var client = new SodaClient("https://opendata.rdw.nl");
 
-        //                    //"SELECT TOP 1 PERCENT Kenteken FROM Kentekens ORDER BY newid()
-        //                    var dataset = client.GetResource<RDWModel>("m9d7-ebf2");
-        //                    //
-        //                    var query1 = new SoqlQuery().Select("Kenteken, Merk, handelsbenaming, tellerstandoordeel, Inrichting ,europese_voertuigcategorie, wielbasis ,aantal_cilinders")
-        //                                                             //Kenteken input van eerder
-        //                                                             .Where($"kenteken = '{Kenteken}'")
-        //                                                             .Limit(20);
-        //                    //Primaire gegevens
-        //                    var rows = dataset.Query(query1);
-        //                    foreach (var keyValue in rows)
-        //                        if (keyValue.Merk == null)
-        //                        {
-        //                            Console.WriteLine("Werkt niet");
-        //                        }
-        //                        else
-        //                        {
-        //                            ViewBag.WilKenteken = Kenteken;
-        //                            ViewBag.WilMerk = keyValue.Merk;
-        //                            ViewBag.WilHandelsbenaming = keyValue.handelsbenaming;
-        //                            ViewBag.WilInrichting = keyValue.inrichting;
-        //                            ViewBag.WilTellerstandoordeel = keyValue.tellerstandoordeel;
-        //                            ViewBag.WilEUcat = keyValue.europese_voertuigcategorie;
-        //                            ViewBag.WilWielbasis = keyValue.wielbasis;
-        //                            ViewBag.WilaantalCilinder = keyValue.aantal_cilinders;
-        //                            keyValue.carSearch = ($"{keyValue.Merk}" + $" {keyValue.handelsbenaming}");
-        //                            ViewBag.carSearch = keyValue.carSearch;
-        //                            //insert
-        //                        }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("No data found");
-        //            }
-        //            dr.Close();
-        //            conn.Close();
-        //        }
+                            //"SELECT TOP 1 PERCENT Kenteken FROM Kentekens ORDER BY newid()
+                            var dataset = client.GetResource<RDWModel>("m9d7-ebf2");
+                            //
+                            var query1 = new SoqlQuery().Select("Kenteken, Merk, handelsbenaming, tellerstandoordeel, Inrichting ,europese_voertuigcategorie, wielbasis ,aantal_cilinders")
+                                                                     //Kenteken input van eerder
+                                                                     .Where($"kenteken = '{Kenteken}'")
+                                                                     .Limit(20);
+                            //Primaire gegevens
+                            var rows = dataset.Query(query1);
+                            foreach (var keyValue in rows)
+                                if (keyValue.Merk == null)
+                                {
+                                    Console.WriteLine("Werkt niet");
+                                }
+                                else
+                                {
+                                    ViewBag.WilKenteken = Kenteken;
+                                    ViewBag.WilMerk = keyValue.Merk;
+                                    ViewBag.WilHandelsbenaming = keyValue.handelsbenaming;
+                                    ViewBag.WilInrichting = keyValue.inrichting;
+                                    ViewBag.WilTellerstandoordeel = keyValue.tellerstandoordeel;
+                                    ViewBag.WilEUcat = keyValue.europese_voertuigcategorie;
+                                    ViewBag.WilWielbasis = keyValue.wielbasis;
+                                    ViewBag.WilaantalCilinder = keyValue.aantal_cilinders;
+                                    keyValue.carSearch = ($"{keyValue.Merk}" + $" {keyValue.handelsbenaming}");
+                                    ViewBag.carSearch = keyValue.carSearch;
+                                    //insert
+                                }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    dr.Close();
+                    conn.Close();
+                }
 
-        //        return View();
-        //    }
-        //}
+                return View();
+            }
+        }
         [HttpPost]
         public ActionResult AfterLogin(RDWModel Carfavs)
         {
